@@ -1,0 +1,466 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+    <title>Iheb Hadoudi | Startup MVP Strategist</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        :root { scroll-behavior: smooth; }
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            background-color: #020617;
+            color: #f8fafc;
+            margin: 0;
+            padding: 0;
+            overflow-x: hidden;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        .bg-grid {
+            background-image: 
+                linear-gradient(to right, rgba(255, 255, 255, 0.04) 1px, transparent 1px),
+                linear-gradient(to bottom, rgba(255, 255, 255, 0.04) 1px, transparent 1px);
+            background-size: 50px 50px;
+            mask-image: radial-gradient(ellipse at center, black 20%, transparent 80%);
+        }
+
+        .glass-card {
+            background: rgba(15, 23, 42, 0.3);
+            backdrop-filter: blur(24px);
+            -webkit-backdrop-filter: blur(24px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .glass-card:hover {
+            border-color: rgba(96, 165, 250, 0.4);
+            background: rgba(15, 23, 42, 0.5);
+            box-shadow: 0 12px 48px 0 rgba(0, 0, 0, 0.5);
+        }
+
+        .browser-mockup {
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 1.5rem;
+            overflow: hidden;
+            background: #0f172a;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+        }
+        .browser-header {
+            height: 40px;
+            background: rgba(255, 255, 255, 0.03);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+            display: flex;
+            align-items: center;
+            padding: 0 1rem;
+            gap: 6px;
+        }
+        .dot { width: 8px; height: 8px; border-radius: 50%; background: rgba(255, 255, 255, 0.2); }
+
+        .btn-shimmer {
+            position: relative;
+            overflow: hidden;
+        }
+        .btn-shimmer::after {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: linear-gradient(
+                to bottom right,
+                rgba(255, 255, 255, 0) 0%,
+                rgba(255, 255, 255, 0.1) 40%,
+                rgba(255, 255, 255, 0.4) 50%,
+                rgba(255, 255, 255, 0.1) 60%,
+                rgba(255, 255, 255, 0) 100%
+            );
+            transform: rotate(45deg);
+            transition: all 0.6s ease;
+            opacity: 0;
+        }
+        .btn-shimmer:hover::after {
+            opacity: 1;
+            left: 100%;
+            top: 100%;
+        }
+
+        .gradient-text {
+            background: linear-gradient(135deg, #fff 0%, #94a3b8 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .blue-gradient-text {
+            background: linear-gradient(135deg, #60a5fa 0%, #c084fc 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .aurora-1 {
+            background: radial-gradient(circle at center, rgba(59, 130, 246, 0.18) 0%, transparent 70%);
+            filter: blur(120px);
+            animation: drift-1 25s infinite alternate ease-in-out;
+        }
+        .aurora-2 {
+            background: radial-gradient(circle at center, rgba(192, 132, 252, 0.15) 0%, transparent 70%);
+            filter: blur(120px);
+            animation: drift-2 30s infinite alternate-reverse ease-in-out;
+        }
+
+        @keyframes drift-1 {
+            0% { transform: translate(-15%, -15%) scale(1); }
+            50% { transform: translate(10%, 5%) scale(1.1); }
+            100% { transform: translate(15%, 15%) scale(1.2); }
+        }
+        @keyframes drift-2 {
+            0% { transform: translate(15%, 15%) scale(1.2); }
+            50% { transform: translate(-5%, 10%) scale(1.1); }
+            100% { transform: translate(-15%, -15%) scale(1); }
+        }
+
+        .scan-line {
+            position: absolute;
+            width: 100%;
+            height: 1px;
+            background: linear-gradient(to right, transparent, rgba(59, 130, 246, 0.15), transparent);
+            animation: scan 10s linear infinite;
+        }
+        @keyframes scan {
+            0% { top: 0%; opacity: 0; }
+            5% { opacity: 1; }
+            95% { opacity: 1; }
+            100% { top: 100%; opacity: 0; }
+        }
+
+        .pulse-whatsapp { animation: pulse-whatsapp 2.5s infinite; }
+        @keyframes pulse-whatsapp {
+            0% { box-shadow: 0 0 0 0 rgba(34, 197, 94, 0.5); }
+            70% { box-shadow: 0 0 0 25px rgba(34, 197, 94, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(34, 197, 94, 0); }
+        }
+
+        .pulse-live {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: #22c55e;
+            box-shadow: 0 0 0 rgba(34, 197, 94, 0.4);
+            animation: pulse-live 1.5s infinite;
+        }
+        @keyframes pulse-live {
+            0% { box-shadow: 0 0 0 0 rgba(34, 197, 94, 0.7); }
+            70% { box-shadow: 0 0 0 6px rgba(34, 197, 94, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(34, 197, 94, 0); }
+        }
+
+        ::-webkit-scrollbar { width: 6px; }
+        ::-webkit-scrollbar-track { background: #020617; }
+        ::-webkit-scrollbar-thumb { background: #1e293b; border-radius: 10px; }
+        ::-webkit-scrollbar-thumb:hover { background: #334155; }
+    </style>
+    <script type="importmap">
+{
+  "imports": {
+    "react": "https://esm.sh/react@19.0.0",
+    "react-dom": "https://esm.sh/react-dom@19.0.0",
+    "react-dom/client": "https://esm.sh/react-dom@19.0.0/client",
+    "lucide-react": "https://esm.sh/lucide-react@0.460.0",
+    "framer-motion": "https://esm.sh/framer-motion@11.11.11?deps=react@19.0.0",
+    "react/": "https://esm.sh/react@^19.2.3/",
+    "react-router-dom": "https://esm.sh/react-router-dom@^7.11.0"
+  }
+}
+</script>
+</head>
+<body class="bg-slate-950 text-slate-200">
+    <div class="fixed inset-0 pointer-events-none z-0 overflow-hidden">
+        <div class="absolute inset-0 bg-grid opacity-60"></div>
+        <div class="absolute top-0 left-0 w-full h-full aurora-1 opacity-80"></div>
+        <div class="absolute bottom-0 right-0 w-full h-full aurora-2 opacity-80"></div>
+        <div class="scan-line"></div>
+        <svg class="absolute inset-0 w-full h-full opacity-[0.04]" viewBox="0 0 100 100" preserveAspectRatio="none">
+            <circle cx="15" cy="15" r="0.15" fill="white"><animate attributeName="cy" from="110" to="-10" dur="18s" repeatCount="indefinite" /></circle>
+            <circle cx="45" cy="50" r="0.15" fill="white"><animate attributeName="cy" from="110" to="-10" dur="12s" repeatCount="indefinite" /></circle>
+            <circle cx="75" cy="20" r="0.15" fill="white"><animate attributeName="cy" from="110" to="-10" dur="22s" repeatCount="indefinite" /></circle>
+            <circle cx="90" cy="80" r="0.15" fill="white"><animate attributeName="cy" from="110" to="-10" dur="15s" repeatCount="indefinite" /></circle>
+        </svg>
+    </div>
+
+    <div id="root" class="relative z-10"></div>
+
+    <script type="module">
+        import React, { useState, useEffect } from 'react';
+        import ReactDOM from 'react-dom/client';
+        import { motion, AnimatePresence } from 'framer-motion';
+        import { 
+          Zap, Rocket, Layout, Sparkles, ShoppingCart, Briefcase, ExternalLink,
+          MessageSquare, Check, ArrowRight, Target, Clock, Monitor, CheckCircle,
+          Database, Layers, ShieldCheck, Star, Send, Loader2
+        } from 'lucide-react';
+
+        const PERSONAL_INFO = {
+          name: "Iheb Hadoudi",
+          role: "Expert Product Designer & Startup Strategist",
+          whatsappLink: "https://wa.me/21620200524?text=Hi%20Iheb%2C%20I'm%20ready%20to%20ship%20my%20MVP.",
+          fiverrLink: "https://fr.fiverr.com/s/gDkBbjL",
+          mostaqlLink: "https://mostaql.com/u/iheb_hadoudi",
+          linkedinLink: "https://www.linkedin.com/in/ihebhadoudi/",
+          upworkLink: "https://www.upwork.com/freelancers/~017bae96678ac99372?mp_source=share"
+        };
+
+        const PROJECTS = [
+          {
+            id: 1,
+            name: "Enterprise SaaS MVP",
+            type: "Auth • Multi-Tenant • Admin Dashboard",
+            goal: "High-performance platform for client management & billing automation.",
+            stats: { buildTime: "12 Days", users: "Early Access", complexity: "High" },
+            features: ["RBAC Access Control", "Dynamic Data Viz", "Stripe Billing", "Custom Design System"],
+            tools: ["Bubble", "Stripe", "Airtable"],
+            image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&q=80&w=1200",
+          },
+          {
+            id: 2,
+            name: "Internal Ops Control",
+            type: "Internal Tool • Automation",
+            goal: "Unified center for logistics tracking and real-time reporting.",
+            stats: { buildTime: "9 Days", reduction: "40% Time Save", ROI: "Immediate" },
+            features: ["Inventory Sync", "Auto-WhatsApp Alerts", "PDF Generation", "Staff KPIs"],
+            tools: ["FlutterFlow", "Supabase", "Make.com"],
+            image: "https://images.unsplash.com/photo-1454165833767-1330084b1711?auto=format&fit=crop&q=80&w=1200",
+          }
+        ];
+
+        const SectionHeader = ({ title, highlight, subtitle }) => (
+          React.createElement('div', { className: "text-center mb-16 md:mb-24" },
+            React.createElement('h2', { className: "text-4xl md:text-7xl font-black text-white tracking-tighter uppercase mb-6 leading-none" },
+              title, " ", React.createElement('span', { className: "blue-gradient-text" }, highlight)
+            ),
+            subtitle && React.createElement('p', { className: "text-slate-400 text-lg md:text-xl max-w-2xl mx-auto font-medium leading-relaxed" }, subtitle)
+          )
+        );
+
+        const Navbar = () => {
+          const [scrolled, setScrolled] = useState(false);
+          useEffect(() => {
+            const handleScroll = () => setScrolled(window.scrollY > 20);
+            window.addEventListener('scroll', handleScroll);
+            return () => window.removeEventListener('scroll', handleScroll);
+          }, []);
+
+          return React.createElement('nav', { 
+            className: `fixed top-0 left-0 right-0 z-[100] transition-all duration-500 ${scrolled ? 'py-4 bg-slate-950/80 backdrop-blur-xl border-b border-white/5' : 'py-8'}` 
+          },
+            React.createElement('div', { className: "max-w-7xl mx-auto px-6 flex justify-between items-center" },
+              React.createElement('a', { href: "#", className: "text-2xl font-black tracking-tighter uppercase text-white" }, "IHEB"),
+              React.createElement('div', { className: "hidden md:flex gap-10" },
+                ['Services', 'Portfolio', 'Process'].map(item => 
+                  React.createElement('a', { key: item, href: `#${item.toLowerCase()}`, className: "text-[10px] font-bold uppercase tracking-[0.3em] text-slate-400 hover:text-white transition-colors" }, item)
+                )
+              ),
+              React.createElement('a', { 
+                href: PERSONAL_INFO.whatsappLink,
+                target: "_blank",
+                className: "px-7 py-3 bg-white text-slate-950 rounded-full text-[10px] font-black uppercase tracking-[0.1em] hover:bg-slate-200 transition-all active:scale-95 shadow-lg shadow-white/10 btn-shimmer" 
+              }, "Start Building")
+            )
+          );
+        };
+
+        const App = () => {
+          const [form, setForm] = useState({ name: '', brief: '' });
+          const [sending, setSending] = useState(false);
+
+          const handleForm = (e) => {
+            e.preventDefault();
+            setSending(true);
+            setTimeout(() => {
+              const msg = `Hi Iheb, I am ${form.name}. Idea: ${form.brief}`;
+              window.open(`https://wa.me/21620200524?text=${encodeURIComponent(msg)}`, '_blank');
+              setSending(false);
+            }, 800);
+          };
+
+          return React.createElement('div', { className: "flex flex-col min-h-screen" },
+            React.createElement(Navbar),
+
+            // HERO
+            React.createElement('section', { id: "home", className: "relative pt-48 pb-32 px-6 text-center min-h-[95vh] flex flex-col justify-center" },
+              React.createElement(motion.div, { 
+                initial: { opacity: 0, y: 10 }, animate: { opacity: 1, y: 0 }, 
+                className: "mx-auto inline-flex items-center gap-2 px-5 py-2 rounded-full glass-card border-white/10 mb-10" 
+              },
+                React.createElement(Sparkles, { className: "w-4 h-4 text-blue-400" }),
+                React.createElement('span', { className: "text-[10px] font-black uppercase tracking-[0.3em] text-blue-300" }, "High-Performance Startup MVPs")
+              ),
+              React.createElement(motion.h1, { 
+                initial: { opacity: 0, y: 40 }, animate: { opacity: 1, y: 0 }, transition: { duration: 0.9 },
+                className: "text-6xl md:text-[11rem] font-black tracking-tighter text-white mb-10 leading-[0.82] uppercase max-w-7xl mx-auto gradient-text" 
+              }, "I Engineer Startup ", React.createElement('span', { className: "blue-gradient-text" }, "Breakthroughs")),
+              React.createElement(motion.p, { 
+                initial: { opacity: 0 }, animate: { opacity: 1 }, transition: { delay: 0.4 },
+                className: "text-xl md:text-3xl text-slate-400 max-w-3xl mx-auto mb-16 font-medium leading-relaxed" 
+              }, "I help founders transform high-level ideas into working MVPs using AI + no-code — shipped with elite UX and robust logic."),
+              
+              React.createElement(motion.div, { 
+                initial: { opacity: 0, y: 20 }, animate: { opacity: 1, y: 0 }, transition: { delay: 0.6 },
+                className: "flex flex-wrap gap-6 justify-center items-center px-4" 
+              },
+                React.createElement('a', { 
+                  href: PERSONAL_INFO.whatsappLink, target: "_blank", 
+                  className: "w-full sm:w-auto px-16 py-6 bg-white text-slate-950 rounded-2xl font-black text-2xl shadow-2xl flex items-center justify-center gap-4 hover:-translate-y-2 transition-all btn-shimmer" 
+                }, React.createElement(MessageSquare, { className: "w-6 h-6" }), "Start Project"),
+                React.createElement('a', { 
+                  href: PERSONAL_INFO.mostaqlLink, target: "_blank", 
+                  className: "w-full sm:w-auto px-16 py-6 glass-card text-white rounded-2xl font-black text-2xl flex items-center justify-center gap-4 hover:border-white/30 hover:-translate-y-2 transition-all shadow-xl" 
+                }, React.createElement(ExternalLink, { className: "w-6 h-6 text-purple-400" }), "Mostaql")
+              )
+            ),
+
+            // SERVICES
+            React.createElement('section', { id: "services", className: "py-32 px-6" },
+              React.createElement('div', { className: "max-w-7xl mx-auto" },
+                React.createElement(SectionHeader, { title: "Strategic", highlight: "Capability", subtitle: "Full-stack functionality delivered through elite no-code engineering." }),
+                React.createElement('div', { className: "grid grid-cols-1 md:grid-cols-3 gap-8" },
+                  [
+                    { title: "MVP Buildout", icon: Rocket, features: ["Auth & Roles", "DB Design", "CRUD Flows", "UI/UX Polish"], color: "text-blue-500" },
+                    { title: "Internal Tools", icon: Layout, features: ["Admin Panels", "Agency Portals", "CRM Logic", "Data Search"], color: "text-indigo-500" },
+                    { title: "Automation", icon: Zap, features: ["API Workflows", "AI Agents", "LLM Pipelines", "Make/Zapier"], color: "text-purple-500" }
+                  ].map((s, i) => React.createElement('div', { key: i, className: "p-12 glass-card rounded-[3.5rem] flex flex-col h-full" },
+                    React.createElement('div', { className: `p-5 bg-slate-900 rounded-2xl w-fit mb-10 ${s.color}` }, React.createElement(s.icon, { className: "w-10 h-10" })),
+                    React.createElement('h3', { className: "text-3xl font-black text-white mb-8 uppercase" }, s.title),
+                    React.createElement('ul', { className: "space-y-5 mb-10 flex-grow" }, s.features.map((f, fi) => 
+                      React.createElement('li', { key: fi, className: "flex items-center gap-4 text-slate-400 text-base font-semibold" }, 
+                        React.createElement(Check, { className: "w-5 h-5 text-blue-500" }), f
+                      )
+                    )),
+                    React.createElement('a', { href: PERSONAL_INFO.whatsappLink, className: "flex items-center gap-2 text-xs font-black uppercase tracking-widest text-slate-500 hover:text-white transition-colors" }, "Inquire now", React.createElement(ArrowRight, { className: "w-4 h-4" }))
+                  ))
+                )
+              )
+            ),
+
+            // PORTFOLIO
+            React.createElement('section', { id: "portfolio", className: "py-48 px-6" },
+              React.createElement('div', { className: "max-w-7xl mx-auto" },
+                React.createElement(SectionHeader, { title: "Validated", highlight: "Demos", subtitle: "Production-ready builds demonstrating technical precision and user-centric logic." }),
+                React.createElement('div', { className: "space-y-48" },
+                  PROJECTS.map((p, i) => React.createElement(motion.div, { 
+                    key: i, initial: { opacity: 0, y: 60 }, whileInView: { opacity: 1, y: 0 }, viewport: { once: true },
+                    className: `flex flex-col lg:flex-row gap-20 items-center ${i % 2 !== 0 ? 'lg:flex-row-reverse' : ''}` 
+                  },
+                    React.createElement('div', { className: "w-full lg:w-3/5 group" },
+                      React.createElement('div', { className: "browser-mockup relative transition-all duration-500 group-hover:-translate-y-4 group-hover:shadow-[0_40px_100px_rgba(59,130,246,0.3)]" },
+                        React.createElement('div', { className: "browser-header" },
+                          React.createElement('div', { className: "dot bg-red-500/50" }), React.createElement('div', { className: "dot bg-yellow-500/50" }), React.createElement('div', { className: "dot bg-green-500/50" }),
+                          React.createElement('div', { className: "ml-4 px-3 py-1 bg-white/5 rounded-full flex items-center gap-2" },
+                            React.createElement(Monitor, { className: "w-3 h-3 text-slate-500" }),
+                            React.createElement('span', { className: "text-[8px] text-slate-500 font-bold uppercase tracking-widest" }, "production.app")
+                          )
+                        ),
+                        React.createElement('div', { className: "relative overflow-hidden aspect-[16/10]" },
+                          React.createElement('img', { src: p.image, className: "w-full h-full object-cover transition-transform duration-1000 group-hover:scale-105" }),
+                          React.createElement('div', { className: "absolute inset-0 bg-slate-950/90 backdrop-blur-sm opacity-0 group-hover:opacity-100 transition-all duration-500 flex flex-col justify-center p-12" },
+                            React.createElement('h4', { className: "text-blue-400 font-black uppercase text-[10px] tracking-[0.4em] mb-8" }, "Technical Specs"),
+                            React.createElement('div', { className: "grid grid-cols-2 gap-8" },
+                              p.features.map((f, fi) => React.createElement('div', { key: fi, className: "flex items-start gap-3" },
+                                React.createElement(CheckCircle, { className: "w-5 h-5 text-emerald-500 shrink-0" }),
+                                React.createElement('span', { className: "text-slate-300 font-semibold text-sm" }, f)
+                              ))
+                            ),
+                            React.createElement('div', { className: "mt-12 flex gap-4" },
+                                p.tools.map((t, ti) => React.createElement('span', { key: ti, className: "px-4 py-2 bg-white/5 border border-white/10 rounded-xl text-[10px] font-black text-slate-400 uppercase tracking-widest" }, t))
+                            )
+                          )
+                        )
+                      )
+                    ),
+                    React.createElement('div', { className: "w-full lg:w-2/5" },
+                      React.createElement('div', { className: "flex items-center gap-3 mb-6" },
+                        React.createElement('div', { className: "pulse-live" }),
+                        React.createElement('span', { className: "text-emerald-500 font-black uppercase text-[10px] tracking-[0.4em]" }, "Live Production")
+                      ),
+                      React.createElement('h3', { className: "text-4xl md:text-5xl font-black text-white uppercase mb-6 leading-tight" }, p.name),
+                      React.createElement('p', { className: "text-slate-400 text-lg font-medium leading-relaxed mb-10" }, p.goal),
+                      React.createElement('div', { className: "p-8 glass-card rounded-[2.5rem]" },
+                        React.createElement('div', { className: "grid grid-cols-2 gap-8" },
+                          Object.entries(p.stats).map(([k, v]) => React.createElement('div', { key: k },
+                            React.createElement('span', { className: "block text-[10px] text-slate-600 font-black uppercase tracking-widest mb-1" }, k.replace(/([A-Z])/g, ' $1')),
+                            React.createElement('span', { className: "text-lg font-black text-white uppercase tracking-tighter" }, v)
+                          ))
+                        )
+                      )
+                    )
+                  ))
+                )
+              )
+            ),
+
+            // CONTACT
+            React.createElement('section', { id: "contact", className: "py-40 px-6" },
+              React.createElement('div', { className: "max-w-5xl mx-auto text-center" },
+                React.createElement('h2', { className: "text-6xl md:text-[11rem] font-black text-white mb-16 tracking-tighter uppercase leading-[0.8] gradient-text" }, "Let's Ship ", React.createElement('br'), React.createElement('span', { className: "blue-gradient-text" }, "The Vision.")),
+                React.createElement('form', { onSubmit: handleForm, className: "p-12 md:p-16 glass-card rounded-[4rem] text-left space-y-10 max-w-3xl mx-auto shadow-2xl relative overflow-hidden" },
+                    React.createElement('div', { className: "absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-blue-500 to-purple-500" }),
+                    React.createElement('div', null,
+                        React.createElement('label', { className: "block text-[10px] font-black text-slate-500 uppercase tracking-widest mb-4 ml-1" }, "Founder Name"),
+                        React.createElement('input', { required: true, value: form.name, onChange: e => setForm({...form, name: e.target.value}), placeholder: "Enter your name", className: "w-full bg-slate-950 border border-white/5 rounded-[2rem] px-8 py-6 text-white outline-none font-semibold text-lg" })
+                    ),
+                    React.createElement('div', null,
+                        React.createElement('label', { className: "block text-[10px] font-black text-slate-500 uppercase tracking-widest mb-4 ml-1" }, "Startup Brief"),
+                        React.createElement('textarea', { required: true, value: form.brief, onChange: e => setForm({...form, brief: e.target.value}), rows: 4, placeholder: "Describe the core functionality...", className: "w-full bg-slate-950 border border-white/5 rounded-[2rem] px-8 py-6 text-white outline-none resize-none font-semibold text-lg" })
+                    ),
+                    React.createElement('button', { type: "submit", disabled: sending, className: "w-full py-8 bg-white text-slate-950 rounded-[2rem] font-black text-2xl uppercase tracking-widest flex items-center justify-center gap-4 active:scale-[0.98] transition-all btn-shimmer" }, 
+                      sending ? React.createElement(Loader2, { className: "animate-spin w-6 h-6" }) : React.createElement(React.Fragment, null, React.createElement(Target, { className: "w-6 h-6" }), "Kickstart Build"))
+                ),
+                React.createElement('div', { className: "mt-24 grid grid-cols-1 sm:grid-cols-2 gap-6" },
+                  [
+                    { label: "Hire via Mostaql", link: PERSONAL_INFO.mostaqlLink, icon: ExternalLink, color: "text-purple-400" },
+                    { label: "Hire via Upwork", link: PERSONAL_INFO.upworkLink, icon: Briefcase, color: "text-blue-400" }
+                  ].map((m, i) => React.createElement('a', { key: i, href: m.link, target: "_blank", className: "p-8 glass-card rounded-3xl flex flex-col items-center gap-4 hover:-translate-y-2 transition-all group" },
+                    React.createElement(m.icon, { className: `w-8 h-8 ${m.color}` }),
+                    React.createElement('span', { className: "text-[10px] font-black uppercase tracking-[0.2em] text-slate-400 group-hover:text-white" }, m.label)
+                  ))
+                )
+              )
+            ),
+
+            // FOOTER
+            React.createElement('footer', { className: "py-24 border-t border-white/5 relative z-10" },
+              React.createElement('div', { className: "max-w-7xl mx-auto px-6 flex flex-col md:flex-row justify-between items-center gap-16" },
+                React.createElement('div', { className: "text-center md:text-left" },
+                    React.createElement('p', { className: "text-white font-black text-3xl tracking-tighter uppercase mb-3" }, "IHEB HADOUDI"),
+                    React.createElement('p', { className: "text-slate-600 text-[10px] font-black uppercase tracking-[0.5em]" }, "Elite No-Code MVP Engineering")
+                ),
+                React.createElement('div', { className: "flex flex-wrap justify-center gap-10" },
+                    [
+                        { name: 'LinkedIn', link: PERSONAL_INFO.linkedinLink },
+                        { name: 'Mostaql', link: PERSONAL_INFO.mostaqlLink },
+                        { name: 'Fiverr', link: PERSONAL_INFO.fiverrLink },
+                        { name: 'Upwork', link: PERSONAL_INFO.upworkLink }
+                    ].map(s => React.createElement('a', { key: s.name, href: s.link, target: "_blank", className: "text-slate-500 hover:text-white transition-colors font-black text-[10px] uppercase tracking-widest" }, s.name))
+                )
+              ),
+              React.createElement('div', { className: "max-w-7xl mx-auto px-6 mt-16 text-center" },
+                React.createElement('p', { className: "text-slate-800 text-[9px] font-black uppercase tracking-widest" }, "© 2025 IHEB HADOUDI — Worldwide Tech Delivery")
+              )
+            ),
+
+            React.createElement('a', { 
+              href: PERSONAL_INFO.whatsappLink, target: "_blank", 
+              className: "fixed bottom-10 right-10 z-[100] p-5 bg-slate-900 border border-white/10 rounded-full shadow-2xl pulse-whatsapp transition-transform hover:scale-110 active:scale-90" 
+            }, React.createElement(MessageSquare, { className: "w-8 h-8 text-emerald-500" }))
+          );
+        };
+
+        const root = ReactDOM.createRoot(document.getElementById('root'));
+        root.render(React.createElement(App));
+    </script>
+</body>
+</html>
